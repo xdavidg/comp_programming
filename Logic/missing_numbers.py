@@ -6,15 +6,15 @@ def main():
     for i in range(1, 6):
         start, end = 0, i
         curr = int(s[:i])
-        
-        while end < len(s):
-            
-            if curr + 1 == next:
-                start, end = i, i + i
-            else:
+        while end < len(possibilites):
+            temp = str(curr + 1)
+            start, end = i + 1, i + len(str)
+            if end >= len(possibilites):
                 break
-        if end == len(s) - 1:
-            return True
+            print(temp)
+            print(s[start:end])
+            if s[start:end] != temp:
+                break
 
 
 if __name__ == "__main__":
