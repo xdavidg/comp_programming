@@ -24,8 +24,10 @@ for i in range(len(digits)):
 if total / count == total // count:
     print(total // count)
 elif total < count:
-    num, den = Fraction(numerator=total % count, denominator=count).as_integer_ratio()
+    num, den = Fraction(numerator=total %
+                        count, denominator=count).as_integer_ratio()
     print(f"{num}/{den}")
 else:
-    num, den = Fraction(numerator=total % count, denominator=count).as_integer_ratio()
+    num, den = Fraction(numerator=total %
+                        count, denominator=count).as_integer_ratio()
     print(f"{total // count} {num} / {den}")

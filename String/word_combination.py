@@ -16,7 +16,7 @@ mod = 1000000007
 for i in range(1, len(target)):
     index = ord(target[i]) - ord('a') + 1
     print(index)
-    for sub in word_dic[index]:/
+    for sub in word_dic[index]:
         if len(sub) <= i + 1:
             if sub == target[i - (len(sub)-1):i]:
                 dp[i] = (dp[i] + dp[i-len(sub) + 1]) % mod
