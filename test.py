@@ -1,14 +1,8 @@
-words = ["hello", "goodbye", "zz", "z"]
+arr1 = [2, 3, 7, 9, 10]
+arr2 = [4, 5, 6, 8, 23]
 
-ss = []
-words.sort(key = lambda word : len(word), reverse = True)
-print(words)
+med_index = (len(arr1) + len(arr2)) // 2
 
-for i in range(len(words)):
-    print(f"here is {i}")
-    for j in range(i + 1, len(words)):
-        print(j)
-        if words[j] in words[i] and words[j] not in ss:
-            ss.append(words[j])
+mid1, mid2 = len(arr1) // 2, len(arr2) // 2
 
-print(ss)
+print(med_index, mid1, mid2)
