@@ -21,4 +21,4 @@ while left < right:
         right = mid
     else:
         left = mid + 1
-return left
+print(left)
