@@ -1,52 +1,39 @@
-class Graph:
-    def __init__(self, vertices):
-        self.V = vertices
-        self.graph = [[0 for column in range(vertices)] for row in range(vertices)]
-
-    def minDistance(self, dist, sptSet):
-        min = float("inf")
-
-        for v in range(self.V):
-            if dist[v] < min and sptSet[v] == False:
-                min = dist[v]
-                min_index = v
-        return min_index
-
-    def dijkstra(self, src):
-        dist = [float("inf")] * self.V
-        dist[src] = 0
-        sptSet = [False] * self.V
-
-        for cout in range(self.V):
-
-            u = self.minDistance(dist, sptSet)
-
-            sptSet[u] = True
-
-            for v in range(self.V):
-                if (
-                    self.graph[u][v] > 0
-                    and sptSet[v] == False
-                    and dist[v] > dist[u] + self.graph[u][v]
-                ):
-                    dist[v] = dist[u] + self.graph[u][v]
+import heapq
 
 
 def main():
     n = 7
-    roads = [[0,6,7],[0,1,2],[1,2,3],[1,3,3],[6,3,3],[3,5,1],[6,5,1],[2,5,1],[0,4,5],[4,6,2]]
+    roads = [[0, 6, 7], [0, 1, 2], [1, 2, 3], [1, 3, 3], [6, 3, 3],
+             [3, 5, 1], [6, 5, 1], [2, 5, 1], [0, 4, 5], [4, 6, 2]]
 
-    g = Graph(n)
+    g = [[] for _ in range(n)]
 
-    for x, y, cost in roads:
-        g.graph[x][y] = cost
-        g.graph[y][x] = cost
-    
-    print(g.graph)
+    for source, dest, cost in roads:
+        g[source].append((dest, cost))
+        g[dest].append((source, cost))
 
-    g.dijkstra(0)
+    dist = [float('inf')] * n
+    ways = [0] * n
+    mod = 10**9 + 7
 
-    print(g.graph)
+    ways[0] = 1
+    dist[0] = 0
+    pq = [[0, 0]]
+
+    while pq:
+        d, node = heapq.heappop(pq)
+
+        if d > dist[node]:
+            continue
+
+        for neighbour, time in g[node]:
+            if dist[neighbour] > dist[node] + time:
+                dist[neighbour] = dist[node] + time
+                ways[neighbour] = ways[node]
+                heapq.heappush(pq, (dist[neighbour], neighbour))
+            elif dist[neighbour] == dist[node] + time:
+                ways[neighbour] = (ways[neighbour] + ways[node]) % mod
+    print(ways[n-1])
 
 
 if __name__ == "__main__":
