@@ -13,6 +13,8 @@ def numberOfPowerfulInt(start, finish, limit, s):
         if limit_int < s_int:
             return 0
         finish = limit_int
+    
+    
 
 
 def main():
