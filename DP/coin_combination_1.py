@@ -1,6 +1,6 @@
 in_list = list(map(int, input().strip().split(" ")))
-num_coin = in_list[0]
-total = in_list[1]
+total = in_list[0]
+num_coin = in_list[1]
 
 coin_list = list(map(int, input().strip().split(" ")))
 
