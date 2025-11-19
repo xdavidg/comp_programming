@@ -15,3 +15,7 @@ for value in range(total + 1):
             dp[value] = (dp[value] + dp[value - coin]) % mod
 
 print(dp[-1])
+
+dp[value] += dp[value - coin] % mod
+
+1000000006 += 500000

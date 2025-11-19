@@ -2,7 +2,7 @@ import sys
 
 def coin_change(amount, coins):
     total = amount + 1
-    dp = [total] * (amount + 1)
+    dp = [total] * (float('inf'))
     dp[0] = 0
 
     for c in coins:
